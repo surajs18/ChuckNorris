@@ -5,6 +5,7 @@ import RandomFact from "./pages/RandomFact";
 import Categories from "./pages/Categories";
 import Search from "./pages/Search";
 import CategoryViewer from "./pages/CategoryViewer";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
               <>
                 <Header />
                 <Dashboard />
+                <Footer />
               </>
             }
           />
@@ -37,6 +39,7 @@ function App() {
               <>
                 <Header />
                 <Categories />
+                <Footer />
               </>
             }
           />

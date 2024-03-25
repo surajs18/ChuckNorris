@@ -7,9 +7,9 @@ export default function Header() {
   const nav = useNavigate();
 
   return (
-    <nav className="flex items-center justify-between p-3 mb-5 bg-[#ee9a9a]">
+    <nav className="flex flex-wrap gap-3 items-center justify-between p-3 mb-5 bg-[#ee9a9a]">
       <img src={Logo} alt="Chuck Norris" className="w-[10rem]" />
-      <ul className="flex gap-2 font-semibold select-none cursor-pointer text-stone-100">
+      <ul className="flex gap-2 font-semibold select-none cursor-pointer text-stone-100 text-sm md:text-base">
         <li
           className={`hover:bg-blue-500 p-2 rounded-xl duration-100 ${
             loc?.pathname === "/" && "bg-blue-500"
