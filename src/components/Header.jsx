@@ -7,7 +7,7 @@ export default function Header() {
   const nav = useNavigate();
 
   return (
-    <nav className="flex flex-wrap gap-3 items-center justify-between p-3 mb-5 bg-[#ee9a9a]">
+    <nav className="flex flex-wrap gap-3 items-center justify-center md:justify-between p-3 mb-5 bg-[#ee9a9a]">
       <img src={Logo} alt="Chuck Norris" className="w-[10rem]" />
       <ul className="flex gap-2 font-semibold select-none cursor-pointer text-stone-100 text-sm md:text-base">
         <li
