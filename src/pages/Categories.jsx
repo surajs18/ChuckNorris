@@ -8,27 +8,9 @@ import { getCategories } from "../services/Categories";
 export default function Categories() {
   const nav = useNavigate();
   const dispatch = useDispatch();
-  var initial = [
-    "animal",
-    "career",
-    "celebrity",
-    "dev",
-    "explicit",
-    "fashion",
-    "food",
-    "history",
-    "money",
-    "movie",
-    "music",
-    "political",
-    "religion",
-    "science",
-    "sport",
-    "travel",
-  ];
 
-  const [selected, setSelected] = useState("");
-  const [categories, setCategories] = useState(initial);
+  //   const [selected, setSelected] = useState("");
+  const [categories, setCategories] = useState([]);
 
   const fetchData = useCallback(async () => {
     try {
@@ -44,8 +26,8 @@ export default function Categories() {
   }, [fetchData]);
 
   function setter(data) {
-    setSelected(data);
-    console.log(selected);
+    // setSelected(data);
+    // console.log(selected);
     dispatch(setCategory(data));
     setTimeout(() => nav("/categoryviewer"), 100);
   }

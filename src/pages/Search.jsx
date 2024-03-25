@@ -4,7 +4,7 @@ import { getSearch } from "../services/Search";
 
 export default function Search() {
   const [search, setSearch] = useState("");
-  const [joke, setJoke] = useState("Sample Joke!");
+  const [joke, setJoke] = useState("Loading...");
 
   const fetchData = useCallback(async () => {
     // console.log(search);

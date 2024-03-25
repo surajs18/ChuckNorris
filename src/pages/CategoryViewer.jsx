@@ -8,7 +8,7 @@ import { getCategoryViewer } from "../services/CategoryViewer";
 export default function CategoryViewer() {
   const nav = useNavigate();
   const selectedCategory = useSelector(selectCategory);
-  const [joke, setJoke] = useState("Sample Joke!");
+  const [joke, setJoke] = useState("Loading...");
 
   const fetchData = useCallback(async () => {
     // console.log(selectedCategory);

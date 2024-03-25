@@ -28,7 +28,9 @@ export default function Header() {
         </li>
         <li
           className={`hover:bg-blue-500 p-2 rounded-xl duration-100 ${
-            loc?.pathname === "/categories" && "bg-blue-500"
+            (loc?.pathname === "/categories" ||
+              loc?.pathname === "/categoryviewer") &&
+            "bg-blue-500"
           }`}
           onClick={() => nav("/categories")}
         >

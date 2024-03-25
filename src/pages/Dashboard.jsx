@@ -1,6 +1,4 @@
 export default function Dashboard() {
-  const x = import.meta.env.VITE_URL;
-  console.log(x);
   return (
     <div className="w-full px-3 text-justify">
       <h3 className="font-bold text-xl text-center">
