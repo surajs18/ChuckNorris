@@ -63,6 +63,20 @@ function App() {
               </>
             }
           />
+
+          <Route
+            path="*"
+            element={
+              <>
+                <Header />
+                <div className="w-full h-[80dvh] flex flex-col justify-center items-center text-xl font-semibold">
+                  <p>404!</p>
+                  <br />
+                  <p>Chuck Norris died trying to find this page...</p>
+                </div>
+              </>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>

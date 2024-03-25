@@ -2,19 +2,31 @@ import { useSelector } from "react-redux";
 import Displayer from "../components/Displayer";
 import { selectCategory } from "../store/CategorySlice";
 import { useNavigate } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
+import { getCategoryViewer } from "../services/CategoryViewer";
 
 export default function CategoryViewer() {
   const nav = useNavigate();
   const selectedCategory = useSelector(selectCategory);
-  var data = {
-    icon_url: "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
-    id: "AvlUuhigTt2HrsL5wAEdEA",
-    url: "",
-    value: "Chuck Norris dick is so hard that it can drill through steel.",
-  };
+  const [joke, setJoke] = useState("Sample Joke!");
+
+  const fetchData = useCallback(async () => {
+    // console.log(selectedCategory);
+    try {
+      const res = await getCategoryViewer(selectedCategory);
+      setJoke(res.data.payload.joke);
+    } catch (err) {
+      console.error(err);
+    }
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   function clicked() {
-    console.log("next", selectCategory);
+    fetchData();
+    // console.log("next", selectedCategory);
   }
 
   if (!selectedCategory) {
@@ -38,7 +50,7 @@ export default function CategoryViewer() {
           Category: {selectedCategory}
         </p>
       )}
-      <Displayer value={data?.value} clicked={clicked} />
+      <Displayer value={joke} clicked={clicked} />
     </div>
   );
 }

@@ -1,15 +1,27 @@
+import { useCallback, useEffect, useState } from "react";
 import Displayer from "../components/Displayer";
+import { getRandom } from "../services/Random";
 
 export default function RandomFact() {
+  const [joke, setJoke] = useState("Sample Joke!");
+
   function clicked() {
-    console.log("next");
+    fetchData();
+    console.log("api call");
   }
 
-  var data = {
-    icon_url: "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
-    id: "AvlUuhigTt2HrsL5wAEdEA",
-    url: "",
-    value: "Chuck Norris dick is so hard that it can drill through steel.",
-  };
-  return <Displayer value={data?.value} clicked={clicked} />;
+  const fetchData = useCallback(async () => {
+    try {
+      const res = await getRandom();
+      setJoke(res.data.payload.joke);
+    } catch (err) {
+      console.error(err);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  return <Displayer value={joke} clicked={clicked} />;
 }

@@ -2,15 +2,13 @@ import Card from "../components/Card";
 import { useDispatch } from "react-redux";
 import { setCategory } from "../store/CategorySlice";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { getCategories } from "../services/Categories";
 
 export default function Categories() {
   const nav = useNavigate();
   const dispatch = useDispatch();
-
-  const [selected, setSelected] = useState("");
-
-  var categories = [
+  var initial = [
     "animal",
     "career",
     "celebrity",
@@ -28,6 +26,22 @@ export default function Categories() {
     "sport",
     "travel",
   ];
+
+  const [selected, setSelected] = useState("");
+  const [categories, setCategories] = useState(initial);
+
+  const fetchData = useCallback(async () => {
+    try {
+      const res = await getCategories();
+      setCategories(res.data.payload);
+    } catch (err) {
+      console.error(err);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   function setter(data) {
     setSelected(data);
