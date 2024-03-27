@@ -24,7 +24,7 @@ export default function Header() {
           }`}
           onClick={() => nav("/random")}
         >
-          Random Fact
+          Random
         </li>
         <li
           className={`hover:bg-blue-500 p-2 rounded-xl duration-100 ${
